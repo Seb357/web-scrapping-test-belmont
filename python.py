@@ -29,7 +29,12 @@ for i in range(1, 6):
 top_tags = ['love', 'inspirational', 'life', 'humor']
 filtered_quotes = [quote for quote in all_quotes if any(tag in top_tags for tag in quote['tags'])]
 
+token = 'rJiUnbpvBMZqXVEYfLuomTeQAWhDyIGxCtaOwSzgFdPKjlcRHsNk'
+
 df = pd.DataFrame(filtered_quotes)
+df['token'] = token
 df.to_csv('results.csv', index=False)
+
+print("Token ajouté à results.csv")
 
 print("Les résultats ont été écrits dans results.csv")
