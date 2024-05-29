@@ -84,3 +84,18 @@ for i in range(1, 3):
     books_quotes.extend(get_books_quotes(i))
 
 print("Citations avec le tag 'books' récupérées dans les pages souhaitées")
+
+existing_quotes = df.to_dict('records')
+
+all_quotes = existing_quotes + books_quotes
+
+seen_quotes = set()
+unique_quotes = []
+for quote in all_quotes:
+    quote_tuple = (quote['texte'], quote['auteur'])
+    if quote_tuple not in seen_quotes:
+        seen_quotes.add(quote_tuple)
+        unique_quotes.append(quote)
+
+df = pd.DataFrame(unique_quotes)
+df.to_csv('results.csv', index=False)
