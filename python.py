@@ -25,3 +25,9 @@ def get_quotes_from_page(page_number):
 all_quotes = []
 for i in range(1, 6):
     all_quotes.extend(get_quotes_from_page(i))
+
+top_tags = ['love', 'inspirational', 'life', 'humor']
+
+filtered_quotes = [quote for quote in all_quotes if any(tag in top_tags for tag in quote['tags'])]
+
+print(filtered_quotes)
