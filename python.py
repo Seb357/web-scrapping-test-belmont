@@ -38,3 +38,49 @@ df.to_csv('results.csv', index=False)
 print("Token ajouté à results.csv")
 
 print("Les résultats ont été écrits dans results.csv")
+
+books_url = 'http://quotes.toscrape.com/tag/books/page/{}/'
+
+def get_books_quotes(page_number):
+    url = books_url.format(page_number)
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    quotes = []
+    
+    for quote in soup.find_all('div', class_='quote'):
+        text = quote.find('span', class_='text').get_text()
+        author = quote.find('small', class_='author').get_text()
+        tags = [tag.get_text() for tag in quote.find_all('a', class_='tag')]
+        quotes.append({
+            'text': text,
+            'author': author,
+            'tags': tags
+        })
+    
+    return quotes
+
+books_url = 'http://quotes.toscrape.com/tag/books/page/{}/'
+
+def get_books_quotes(page_number):
+    url = books_url.format(page_number)
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    quotes = []
+    
+    for quote in soup.find_all('div', class_='quote'):
+        text = quote.find('span', class_='text').get_text()
+        author = quote.find('small', class_='author').get_text()
+        tags = [tag.get_text() for tag in quote.find_all('a', class_='tag')]
+        quotes.append({
+            'texte': text,
+            'auteur': author,
+            'tags': tags
+        })
+    
+    return quotes
+
+books_quotes = []
+for i in range(1, 3):
+    books_quotes.extend(get_books_quotes(i))
+
+print("Citations avec le tag 'books' récupérées dans les pages souhaitées")
