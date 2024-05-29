@@ -27,7 +27,9 @@ for i in range(1, 6):
     all_quotes.extend(get_quotes_from_page(i))
 
 top_tags = ['love', 'inspirational', 'life', 'humor']
-
 filtered_quotes = [quote for quote in all_quotes if any(tag in top_tags for tag in quote['tags'])]
 
-print(filtered_quotes)
+df = pd.DataFrame(filtered_quotes)
+df.to_csv('results.csv', index=False)
+
+print("Les résultats ont été écrits dans results.csv")
