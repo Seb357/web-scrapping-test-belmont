@@ -1,0 +1,35 @@
+Installer les bibliothèques nécessaires :
+
+requests
+BeautifulSoup
+pandas
+
+Récupérer les citations des 5 premières pages :
+
+Utiliser requests pour obtenir le contenu des pages.
+Utiliser BeautifulSoup pour analyser le HTML et extraire les citations, auteurs, et tags.
+
+Filtrer les citations par les 4 premiers tags :
+
+love, inspirational, life, humor.
+Filtrer les citations pour ne garder que celles contenant ces tags.
+
+Sauvegarder les résultats dans un fichier CSV :
+
+Utiliser pandas pour créer un DataFrame avec les citations filtrées.
+Sauvegarder ce DataFrame dans un fichier results.csv.
+
+Inscrire le token dans results.csv :
+
+Lire le fichier results.csv existant.
+Ajouter une colonne pour le token récupéré.
+Sauvegarder les changements dans le fichier CSV.
+
+Récupérer les citations avec le tag "books" :
+
+Utiliser requests et BeautifulSoup pour obtenir les citations des deux premières pages ayant le tag books.
+Filtrer les doublons et mettre à jour le CSV :
+
+Combiner les nouvelles citations avec celles existantes.
+Filtrer les doublons en utilisant un ensemble pour garder les citations uniques.
+Mettre à jour le DataFrame et sauvegarder les résultats dans results.csv.
